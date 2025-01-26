@@ -5,7 +5,7 @@ Az AudioStreamPlayer telepítése:
 1: Telepíteni kell a VLC Media Player alkalmazást windows 64 bites verzióját.
 2: Le kell tölteni az AudioStreamPlayer-t innen, és ki kell bontani.
 3: A VLC telepítési mappájában található a "plugins" mappa, valamint a libvlc.dll és a libvlccore.dll fájlok.
-4: Az AudioStreamPlayer mappában található az AudioStreamPlayer.sln fájl. Ide kell másolni a 3. pontban levő mappát és fájlokat.
+4: Az AudioStreamPlayer mappában található az AudioStreamPlayer.sln fájl. Ennek a kimeneti mappájába kell másolni a 3. pontban levő mappát és fájlokat(a futtatható AudioStreamPlayer.exe mellé.
 5: El kell indítani az AudioStreamPlayer.sln fájlt a Visual Studio-val.
 6: Be kell állítani a Release|x64 platformot.
 7: Build -> ReBuild Solution menüpontot kell elindítani. Elvileg Hibamentesen lefordul.
