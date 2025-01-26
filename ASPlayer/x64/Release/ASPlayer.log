@@ -1,0 +1,10 @@
+﻿  pch.cpp
+  ASPlayer.cpp
+  dllmain.cpp
+D:\Programok\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1392,5): warning MSB8012: TargetPath(D:\Projects\AudioStreamPlayer\AudioStreamPlayer\x64\Release\ASPlayer.dll) does not match the Linker's OutputFile property value (D:\Projects\AudioStreamPlayer\AudioStreamPlayer\AudioStreamPlayer\bin\x64\Release\net9.0-windows\ASPlayer.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     Creating library D:\Projects\AudioStreamPlayer\AudioStreamPlayer\x64\Release\ASPlayer.lib and object D:\Projects\AudioStreamPlayer\AudioStreamPlayer\x64\Release\ASPlayer.exp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 33 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  ASPlayer.vcxproj -> D:\Projects\AudioStreamPlayer\AudioStreamPlayer\x64\Release\ASPlayer.dll

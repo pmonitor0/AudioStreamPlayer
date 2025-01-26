@@ -1,0 +1,20 @@
+LIBRARY
+EXPORTS
+   Init   @1
+   Play   @2
+   Stop   @3
+   Pause  @4
+   ChangeStation @5
+   SetVolume @6
+   AttachBufferEvent @7
+   StartRecorder @9
+   StopRecorder @10
+   GetPosition @11
+   Getstate @12
+   Getduration @13
+   PlayFile @14
+   GetMediaDuration @15
+   RegisterPlayingCallback @16
+   AttachPlayingEvent @17
+   Seek @18
+   PausePlay @19
