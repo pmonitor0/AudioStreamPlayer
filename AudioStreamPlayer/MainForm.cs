@@ -78,11 +78,25 @@ namespace AudioStreamPlayer
 		{
 			openFileDialog1.CheckFileExists = true;
 			openFileDialog1.CheckPathExists = true;
+			openFileDialog1.Multiselect = true;
 			openFileDialog1.InitialDirectory = System.IO.Directory.GetCurrentDirectory();
 			if (openFileDialog1.ShowDialog() == DialogResult.OK)
 			{
 				MP3StreamingPanel mP3StreamingPanel = (MP3StreamingPanel)this.Controls["MP3StreamingPanel"];
-				mP3StreamingPanel.textBoxStreamingUrl.Text = "file:///" + openFileDialog1.FileName;
+				foreach (string file in openFileDialog1.FileNames)
+				{
+					string fileName = Path.GetFileName(file);
+					string dirName = Path.GetDirectoryName(file);
+					string ext = Path.GetExtension(file);
+
+					int pos = fileName.IndexOf(ext);
+					string address = fileName.Substring(0, pos);
+
+					ListViewItem item = new ListViewItem(address);
+					item.SubItems.Add(file);
+					mP3StreamingPanel.listViewFile.Items.Add(item);
+				}
+				
 			}
 		}
 	}

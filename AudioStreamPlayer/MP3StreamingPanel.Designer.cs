@@ -319,10 +319,10 @@
 		private Label lblBufferPos;
 		private TrackBar trackBarPos;
 		private Label lblValuePos;
-		private ListView listViewFile;
 		private ColumnHeader columnHeader3;
 		private ColumnHeader columnHeader4;
 		private MyTimer myTimer1;
 		private Button btnListDelete;
+		public ListView listViewFile;
 	}
 }
