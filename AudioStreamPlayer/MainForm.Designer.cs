@@ -55,15 +55,15 @@ namespace AudioStreamPlayer
 			// openToolStripMenuItem
 			// 
 			openToolStripMenuItem.Name = "openToolStripMenuItem";
-			openToolStripMenuItem.Size = new Size(188, 22);
+			openToolStripMenuItem.Size = new Size(210, 22);
 			openToolStripMenuItem.Text = "Megnyitás...";
 			openToolStripMenuItem.Click += openToolStripMenuItem_Click;
 			// 
 			// AddListfile
 			// 
-			AddListfile.Name = "AddListFile";
-			AddListfile.Size = new Size(188, 22);
-			AddListfile.Text = "Fájl lista hozzáadása...";
+			AddListfile.Name = "AddListfile";
+			AddListfile.Size = new Size(210, 22);
+			AddListfile.Text = "Audio fájlok hozzáadása...";
 			AddListfile.Click += AddListfile_Click;
 			// 
 			// toolStrip1
