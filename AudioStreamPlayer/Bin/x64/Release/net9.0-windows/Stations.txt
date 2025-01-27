@@ -1,0 +1,8 @@
+Dance Wave,https://onair.dancewave.online:8082/dance.mp3
+Kossuth rádió,https://icast.connectmedia.hu/4736/mr1.mp3
+Mix rádió,https://stream.phost.hu:8006/live
+Petőfi rádió,http://mr-stream.mediaconnect.hu/4738/mr2.mp3
+Info rádió,http://stream.infostart.hu/lejatszo/index.html?sid=1
+Katolikus rádió,http://katolikusradio.hu:9000/live_hi.mp3
+Rádió 1 - Balaton,https://icast.connectmedia.hu/5212/live.mp3
+Rádió 1 - Budapest,https://icast.connectmedia.hu/5201/live.mp3
