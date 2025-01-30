@@ -40,13 +40,16 @@ namespace AudioStreamPlayer
 			Error = 7
 		}
 
-		public MP3StreamingPanel()
+		MainForm mainForm;
+
+		public MP3StreamingPanel(MainForm form)
 		{
 			InitializeComponent();
 			listViewFile.AllowDrop = true;
 			this.AllowDrop = true;
 			listViewFile.DragEnter += new DragEventHandler(listViewFile_DragEnter);
 			listViewFile.DragDrop += new DragEventHandler(listViewFile_DragDrop);
+			mainForm = form;
 		}
 
 		void listViewFile_DragEnter(object sender, DragEventArgs e)
@@ -187,7 +190,7 @@ namespace AudioStreamPlayer
 			}
 		}
 
-		private void buttonPlay_Click(object sender, EventArgs e)
+		internal void buttonPlay_Click(object sender, EventArgs e)
 		{
 			VLCState state = ASPlayerAPI.Getstate();
 			if (textBoxStreamingUrl.Text == currentURL)
@@ -196,12 +199,9 @@ namespace AudioStreamPlayer
 				{
 					ASPlayerAPI.Play(null);
 				}
-				if (buttonPlay.Text == "Play") buttonPlay.Text = "Pause";
-				else buttonPlay.Text = "Play";
 				return;
 			}
 			ASPlayerAPI.ChangeStation(textBoxStreamingUrl.Text);
-			buttonPlay.Text = "Pause";
 			currentURL = textBoxStreamingUrl.Text;
 			duration = -1;
 			ASPlayerAPI.SetVolume(volumeSlider1.Value);
@@ -231,12 +231,12 @@ namespace AudioStreamPlayer
 			buttonStop_Click(sender, e);
 		}
 
-		private void buttonStop_Click(object sender, EventArgs e)
+		internal void buttonStop_Click(object sender, EventArgs e)
 		{
 			ASPlayerAPI.Stop();
-			buttonPlay.Text = "Play";
+			//buttonPlay.Text = "Play";
 			currentURL = "";
-			if (this.Parent != null) this.Parent.Text = "AudioStreamPlayer " + ((System.Runtime.InteropServices.Marshal.SizeOf(IntPtr.Zero) == 8) ? " (x64) " : " (x86) ");
+			if (mainForm != null) mainForm.Text = "AudioStreamPlayer " + ((System.Runtime.InteropServices.Marshal.SizeOf(IntPtr.Zero) == 8) ? " (x64) " : " (x86) ");
 		}
 
 		private void waveOut_PlaybackStopped(object sender, EventArgs e)
@@ -501,13 +501,16 @@ namespace AudioStreamPlayer
 
 		private void listViewFile_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (this.listViewFile.SelectedItems.Count != 1) return;
+			//if (this.listViewFile.SelectedItems.Count != 1) return;
 
 		}
 
 		private void btnListDelete_Click(object sender, EventArgs e)
 		{
-			listViewFile.Items.Clear();
+			if (!IsPlayListFile)
+			{
+				listViewFile.Items.Clear();
+			}
 		}
 	}
 }

@@ -11,12 +11,20 @@ namespace AudioStreamPlayer
 {
 	public partial class MainForm : Form
 	{
+		MP3StreamingPanel panel;
+
 		public MainForm()
 		{
 			//
 			InitializeComponent();
 
+			//System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+			//toolStripBtnPause = new System.Windows.Forms.ToolStripButton();
+			//toolStripBtnPause.DisplayStyle = ToolStripItemDisplayStyle.Image;
+			//toolStripBtnPlay.Image = (Image)resources.GetObject("toolStripBtnPause.Image");
 
+
+			//resources.GetObject()
 
 			this.Text = this.Text + ((System.Runtime.InteropServices.Marshal.SizeOf(IntPtr.Zero) == 8) ? " (x64)" : " (x86)");
 
@@ -42,21 +50,29 @@ namespace AudioStreamPlayer
 
 		private void MainForm_Shown(object sender, EventArgs e)
 		{
+			panel = new MP3StreamingPanel(this);
+			this.Controls.Add(panel);
+			panel.Location = new System.Drawing.Point(0, 0);
+			panel.MP3StreamingPanel_SizeChanged(null, null);
+
+
+			toolStripBtnPlay.Visible = true;
+			toolStripBtnPause.Visible = false;
+			toolStripBtnStartRec.Visible = true;
+			toolStripBtnStopRec.Visible = false;
+			toolStrip1.Refresh();
+
 			this.MainForm_SizeChanged(null, null);
 		}
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			MP3StreamingPanel panel = new MP3StreamingPanel();
-			this.Controls.Add(panel);
-			panel.Location = new System.Drawing.Point(0, 0);
-			panel.MP3StreamingPanel_SizeChanged(null, null);
+
 
 		}
 
 		public void MainForm_SizeChanged(object sender, EventArgs e)
 		{
-			MP3StreamingPanel panel = (MP3StreamingPanel)this.Controls["MP3StreamingPanel"];
 			panel.Location = new Point(0, toolStrip1.Bottom);
 			panel.Width = this.Width;
 			panel.Height = this.Height - toolStrip1.Bottom;
@@ -69,8 +85,8 @@ namespace AudioStreamPlayer
 			openFileDialog1.InitialDirectory = System.IO.Directory.GetCurrentDirectory();
 			if (openFileDialog1.ShowDialog() == DialogResult.OK)
 			{
-				MP3StreamingPanel mP3StreamingPanel = (MP3StreamingPanel)this.Controls["MP3StreamingPanel"];
-				mP3StreamingPanel.textBoxStreamingUrl.Text = "file:///" + openFileDialog1.FileName;
+
+				panel.textBoxStreamingUrl.Text = "file:///" + openFileDialog1.FileName;
 			}
 		}
 
@@ -96,8 +112,38 @@ namespace AudioStreamPlayer
 					item.SubItems.Add(file);
 					mP3StreamingPanel.listViewFile.Items.Add(item);
 				}
-				
+
 			}
+		}
+
+		private void toolStripBtnPlay_Click(object sender, EventArgs e)
+		{
+			
+			panel.buttonPlay_Click(null, null);
+			if (ASPlayerAPI.Getstate() == MP3StreamingPanel.VLCState.Playing)
+			{
+				toolStripBtnPlay.Visible = false;
+				toolStripBtnPause.Visible = true;
+				toolStrip1.Refresh();
+			}
+		}
+
+		private void toolStripBtnPause_Click(object sender, EventArgs e)
+		{
+			panel.buttonPlay_Click(null, null);
+			toolStripBtnPlay.Visible = true;
+			toolStripBtnPause.Visible = false;
+			toolStrip1.Refresh();
+		}
+
+		private void toolStripBtnStop_Click(object sender, EventArgs e)
+		{
+			panel.buttonStop_Click(null, null);
+			toolStripBtnPause.Visible= false;
+			toolStripBtnPlay.Visible= true;
+			toolStripBtnStopRec.Visible= false;
+			toolStripBtnStartRec.Visible= true;
+			toolStrip1.Refresh();
 		}
 	}
 }
